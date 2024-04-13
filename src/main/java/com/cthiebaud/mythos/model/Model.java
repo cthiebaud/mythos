@@ -1,9 +1,11 @@
 package com.cthiebaud.mythos.model;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
+import java.util.Random;
 import java.util.Set;
 import java.util.function.Function;
 import java.util.stream.Collectors;
@@ -21,6 +23,7 @@ public enum Model {
     final private Map<String, ActorRecord> name2actorRecord;
     final private Set<Actor> actors;
     final private Map<String, Actor> name2actor;
+    final private List<Actor> actorList;
 
     // initialization block
     {
@@ -33,6 +36,7 @@ public enum Model {
             name2actor = actors.stream().collect(Collectors.toMap(
                     actor -> actor.getName().toLowerCase(),
                     Function.identity()));
+            actorList = new ArrayList<>(actors);
         }
     }
 
@@ -45,6 +49,11 @@ public enum Model {
                 .map(String::toLowerCase) // Convert actorName to lowercase
                 .map(name2actor::get) // Get the Actor object corresponding to the actorName
                 .flatMap(Optional::ofNullable); // Wrap the result in an Optional
+    }
+
+    public final Actor getRandomwActor() {
+        Random random = new Random();
+        return actorList.get(random.nextInt(actorList.size()));
     }
 
     private String generateHtmlDescription(ActorRecord actor) {
@@ -74,7 +83,7 @@ public enum Model {
                             Character.isUpperCase(token.charAt(0)) &&
                             !token.equalsIgnoreCase(actor.name()) &&
                             name2actorRecord.get(token.toLowerCase()) != null) {
-                        sb.append(String.format("<a title=\"#%1$s\">%1$s</a>", token));
+                        sb.append(String.format("<a title='#%1$s'>%1$s</a>", token));
                     } else {
                         sb.append(token);
                     }

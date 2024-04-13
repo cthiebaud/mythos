@@ -1,5 +1,7 @@
 package com.cthiebaud.mythos.model;
 
+import java.util.Set;
+
 import com.cthiebaud.mythos.model.Model.Actor;
 
 /* 
@@ -10,6 +12,8 @@ public class Main {
 
         Model model = Model.INSTANCE;
 
+        Set<Actor> actors = Model.INSTANCE.actors();
+
         for (int i = 0; i < args.length; i++) {
             Actor actor = model.findActorByName(args[i]).orElse(null);
             if (actor == null) {
@@ -19,5 +23,8 @@ public class Main {
             }
             System.out.println();
         }
+
+        var a = Model.INSTANCE.getRandomwActor();
+        System.out.printf("\n%s: %s\n", a.getName(), a.getHtmlDescription());
     }
 }

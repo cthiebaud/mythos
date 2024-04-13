@@ -6,7 +6,7 @@
 
     <groupId>com.cthiebaud.mythos</groupId>
     <artifactId>model</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>2.0.4-SNAPSHOT</version>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -43,7 +43,7 @@
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.8.1</version>
                 <configuration>
-                    <release>22</release>
+                    <release>21</release>
                 </configuration>
             </plugin>
             <plugin>
