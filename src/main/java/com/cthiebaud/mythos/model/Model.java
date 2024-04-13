@@ -74,7 +74,7 @@ public enum Model {
                             Character.isUpperCase(token.charAt(0)) &&
                             !token.equalsIgnoreCase(actor.name()) &&
                             name2actorRecord.get(token.toLowerCase()) != null) {
-                        sb.append(String.format("<a href=\"#%1$s\">%1$s</a>", token));
+                        sb.append(String.format("<a title=\"#%1$s\">%1$s</a>", token));
                     } else {
                         sb.append(token);
                     }
