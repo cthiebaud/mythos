@@ -51,7 +51,7 @@ public enum Model {
                 .flatMap(Optional::ofNullable); // Wrap the result in an Optional
     }
 
-    public final Actor getRandomwActor() {
+    public final Actor getRandomActor() {
         Random random = new Random();
         return actorList.get(random.nextInt(actorList.size()));
     }

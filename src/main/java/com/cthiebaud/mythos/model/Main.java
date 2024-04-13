@@ -24,7 +24,7 @@ public class Main {
             System.out.println();
         }
 
-        var a = Model.INSTANCE.getRandomwActor();
+        var a = Model.INSTANCE.getRandomActor();
         System.out.printf("\n%s: %s\n", a.getName(), a.getHtmlDescription());
     }
 }
