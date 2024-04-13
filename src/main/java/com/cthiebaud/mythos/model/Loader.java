@@ -66,7 +66,9 @@ class Loader {
 
         } catch (Exception e) {
             // Print the stack trace if an exception occurs
-            e.printStackTrace();
+            System.err.println(
+                    "Unable to load model. The most likely cause is that the ressource \"" + filePath
+                            + "\" was not found on the classpath.");
             // Return an empty Optional if an exception occurs
             return Optional.empty();
         }

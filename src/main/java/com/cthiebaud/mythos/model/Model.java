@@ -16,6 +16,7 @@ import opennlp.tools.tokenize.SimpleTokenizer;
 public enum Model {
     INSTANCE;
 
+    final public String classPathRessource = "model.yaml";
     final private Set<ActorRecord> actorRecordSet;
     final private Map<String, ActorRecord> name2actorRecord;
     final private Set<Actor> actors;
@@ -23,7 +24,7 @@ public enum Model {
 
     // initialization block
     {
-        try (Stream<ActorRecord> actorRecordStream = Loader.load("model.yaml").orElseGet(Stream::empty)) {
+        try (Stream<ActorRecord> actorRecordStream = Loader.load(classPathRessource).orElseGet(Stream::empty)) {
             actorRecordSet = actorRecordStream.collect(Collectors.toSet());
             name2actorRecord = actorRecordSet.stream().collect(Collectors.toMap(
                     actor -> actor.name().toLowerCase(),
