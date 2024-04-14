@@ -16,7 +16,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import opennlp.tools.tokenize.SimpleTokenizer;
 
 public enum Model {
-    INSTANCE;
+    MODEL;
 
     final public String classPathRessource = "model.yaml";
     final private Set<ActorRecord> actorRecordSet;
@@ -26,7 +26,7 @@ public enum Model {
     final private List<Actor> actorList;
 
     // initialization block
-    {
+    Model() {
         try (Stream<ActorRecord> actorRecordStream = Loader.load(classPathRessource).orElseGet(Stream::empty)) {
             actorRecordSet = actorRecordStream.collect(Collectors.toSet());
             name2actorRecord = actorRecordSet.stream().collect(Collectors.toMap(
