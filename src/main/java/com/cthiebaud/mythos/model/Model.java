@@ -2,6 +2,7 @@ package com.cthiebaud.mythos.model;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
@@ -37,11 +38,16 @@ public enum Model {
                     actor -> actor.getName().toLowerCase(),
                     Function.identity()));
             actorList = new ArrayList<>(actors);
+            Collections.sort(actorList, Comparator.comparing(Actor::getName));
         }
     }
 
     public final Set<Actor> actors() {
         return Collections.unmodifiableSet(this.actors);
+    }
+
+    public final List<Actor> actorList() {
+        return Collections.unmodifiableList(this.actorList);
     }
 
     public final Optional<Actor> findActorByName(String actorName) {
@@ -95,7 +101,7 @@ public enum Model {
         }
         sb.append(inputText.substring(fromIndex, inputText.length()));
 
-        return sb.toString();
+        return sb.toString().trim();
     }
 
     record ActorRecord(

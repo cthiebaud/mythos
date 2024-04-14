@@ -10,17 +10,22 @@ import com.cthiebaud.mythos.model.Model.Actor;
 public class Main {
     public static void main(String[] args) {
 
+        final String fmt = "-\n%s:\n%s\n";
+
         for (int i = 0; i < args.length; i++) {
             Actor actor = MODEL.findActorByName(args[i]).orElse(null);
             if (actor == null) {
-                System.out.printf("\n%s: <Not Found!>\n", args[i]);
+                System.out.printf(fmt, args[i], "<Not Found!>");
             } else {
-                System.out.printf("\n%s: %s\n", actor.getName(), actor.getHtmlDescription());
+                System.out.printf(fmt, actor.getName(), actor.getHtmlDescription());
             }
-            System.out.println();
         }
-
-        var a = MODEL.getRandomActor();
-        System.out.printf("\n%s: %s\n", a.getName(), a.getHtmlDescription());
+        {
+            Actor a = MODEL.getRandomActor();
+            System.out.printf(fmt, a.getName(), a.getHtmlDescription());
+        }
+        {
+            MODEL.actorList().stream().forEach((a) -> System.out.printf(fmt, a.getName(), a.getHtmlDescription()));
+        }
     }
 }
