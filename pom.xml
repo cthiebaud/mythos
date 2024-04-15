@@ -84,6 +84,9 @@
                 </configuration>
             </plugin>
             <!-- Maven Release Plugin -->
+            <!-- 
+                mvn -B release:prepare && mvn release:perform
+            -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-release-plugin</artifactId>
