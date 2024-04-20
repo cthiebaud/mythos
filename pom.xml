@@ -4,7 +4,7 @@
 
     <groupId>com.cthiebaud.mythos</groupId>
     <artifactId>mythos</artifactId>
-    <version>1.0.2-SNAPSHOT</version>
+    <version>1.0.2</version>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -17,7 +17,7 @@
         <connection>scm:git:https://github.com/cthiebaud/mythos.git</connection>
         <developerConnection>scm:git:https://github.com/cthiebaud/mythos.git</developerConnection>
         <url>https://github.com/cthiebaud/mythos</url>
-        <tag>HEAD</tag>
+        <tag>mythos-1.0.2</tag>
     </scm>
 
     <distributionManagement>
